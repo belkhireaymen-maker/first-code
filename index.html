@@ -1,32 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First Website</title>
+
     <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 100px; background-color: #f0f2f5; }
-        h1 { color: #1877f2; }
-        button { padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; border: none; background: #00befa; color: white; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #1877f2;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #0ea5e9;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0284c7;
+        }
     </style>
 </head>
+
 <body>
+
     <h1>Hello World!</h1>
-    <p>I successfully connected VS Code to GitHub!</p>click="alert
-    <button on('It works! 🎉')">Click Me</button>
+
+    <p>I successfully connected VS Code to GitHub!</p>
+
+    <button onclick="alert('It works! 🎉')">
+        Click Me
+    </button>
+
     <script>
-let players=["neymar","messi","ronaldo","mbappe"]
-for(let i=0;i<players.length;i++){
-    console.log(players[i])
-}
-if (player== messi){
-    console.log("GOAT")
-}
-else{
-    console.log("you dont know ball")
-}
+        let players = ["neymar", "messi", "ronaldo", "mbappe"];
 
+        for (let i = 0; i < players.length; i++) {
+            console.log(players[i]);
+        }
 
+        let player = "messi";
 
-</script>
+        if (player === "messi") {
+            console.log("GOAT");
+        } else {
+            console.log("You don't know ball");
+        }
+    </script>
+
 </body>
 </html>
-SS

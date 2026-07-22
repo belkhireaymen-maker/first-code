@@ -3,169 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
-    <style>
-        :root{--deep:#021728;--mid:#013046;--light:#0b6b8a;}
-        html,body{height:100%;margin:0}
-        body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,var(--deep) 0%, #021e2e 60%);display:flex;align-items:center;justify-content:center;color:#fff}
+    <title>Submariner | A Legend Beneath The Waves</title>
 
-        .hero{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
-
-        /* Light shafts */
-        .rays{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(closest-side, rgba(255,255,255,0.06), transparent 50%);mix-blend-mode:screen;transform:translateY(-10%);opacity:0.9}
-        .rays::before{content:"";position:absolute;left:50%;top:-40%;width:160%;height:200%;transform:translateX(-50%) rotate(12deg);background:linear-gradient(180deg, rgba(255,255,255,0.06), transparent 40%);filter:blur(18px);}
-
-        /* Watch container */
-        .watch-wrap{position:relative;z-index:2;width:48vmin;height:48vmin;max-width:520px;max-height:520px;display:flex;align-items:center;justify-content:center;transform-origin:center center;animation:sink 8s ease-in-out infinite alternate both}
-
-        /* Watch SVG scales responsively */
-        .watch{width:100%;height:100%}
-
-        /* Copy overlay */
-        .copy{position:absolute;top:12vh;left:6vw;right:6vw;text-align:left;z-index:3}
-        .brand{font-size:5vmin;letter-spacing:6px;font-weight:700;color:#e6e6e6}
-        .headline{font-size:6vmin;margin-top:0.5vmin;line-height:0.9;font-weight:600}
-        .cta{margin-top:1.5vmin;display:inline-block;padding:0.9vmin 1.6vmin;background:rgba(255,255,255,0.08);border-radius:6px;color:#fff;text-decoration:none}
-
-        /* Bubbles */
-        .bubbles{position:absolute;inset:0;z-index:1;pointer-events:none}
-        .bubble{position:absolute;border-radius:50%;background:rgba(255,255,255,0.06);backdrop-filter:blur(0.5px);box-shadow:inset 0 0 6px rgba(255,255,255,0.03);animation:rise linear infinite}
-
-        @keyframes sink{from{transform:translateY(-2vmin) scale(1.02) rotate(-2deg)}to{transform:translateY(3vmin) scale(0.98) rotate(1.5deg)}}
-        @keyframes rise{from{transform:translateY(100vh) scale(0.6);opacity:0}50%{opacity:0.8}to{transform:translateY(-20vh) scale(1);opacity:0}}
-        @keyframes pulseBezel{0%{filter:drop-shadow(0 8px 22px rgba(0,0,0,0.6))}50%{filter:drop-shadow(0 14px 30px rgba(0,0,0,0.75))}100%{filter:drop-shadow(0 8px 22px rgba(0,0,0,0.6))}}
-
-        /* Subtle vignette */
-        .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 50% 35%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 70%);z-index:4}
-    </style>
-
-    <div class="hero" role="region" aria-label="Submariner style hero">
-        <div class="rays"></div>
-
-        <div class="copy">
-            <div class="brand">ROLEX</div>
-            <h2 class="headline">Submariner — Into the Depth</h2>
-            <a class="cta" href="#">Discover the Depth</a>
-        </div>
-
-        <div class="watch-wrap" id="watchWrap">
-            <!-- Stylized watch (original artwork, not a photo) -->
-            <svg class="watch" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <defs>
-                    <radialGradient id="glass" cx="35%" cy="28%">
-                        <stop offset="0%" stop-color="rgba(255,255,255,0.32)"/>
-                        <stop offset="60%" stop-color="rgba(255,255,255,0.05)"/>
-                        <stop offset="100%" stop-color="rgba(0,0,0,0.02)"/>
-                    </radialGradient>
-                    <linearGradient id="bezel" x1="0" x2="1">
-                        <stop offset="0%" stop-color="#233b44"/>
-                        <stop offset="100%" stop-color="#0c2730"/>
-                    </linearGradient>
-                </defs>
-
-                <!-- Outer case / bezel -->
-                <g id="case">
-                    <circle cx="300" cy="300" r="260" fill="url(#bezel)" stroke="#061a20" stroke-width="6"/>
-                    <!-- ticks on bezel -->
-                    <g stroke="#aab6bd" stroke-width="5" opacity="0.9">
-                        <!-- longer ticks every 30 degrees -->
-                        <g transform="translate(300,300)">
-                            <!-- generate ticks via JS fallback; include a few here for visual weight -->
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(0)"/>
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(30)"/>
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(60)"/>
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(90)"/>
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(120)"/>
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(150)"/>
-                            <line x1="0" y1="-240" x2="0" y2="-210" transform="rotate(180)"/>
-                        </g>
-                    </g>
-                </g>
-
-                <!-- Dial -->
-                <circle cx="300" cy="300" r="200" fill="#042c36"/>
-
-                <!-- Hour markers -->
-                <g fill="#e6e9ea">
-                    <rect x="292" y="110" width="16" height="38" rx="4"/>
-                    <rect x="292" y="452" width="16" height="38" rx="4"/>
-                    <rect x="110" y="292" width="38" height="16" rx="4"/>
-                    <rect x="452" y="292" width="38" height="16" rx="4"/>
-                </g>
-
-                <!-- Hands -->
-                <g id="hands" transform="translate(0,0)">
-                    <line x1="300" y1="300" x2="300" y2="180" stroke="#d4d7d8" stroke-width="12" stroke-linecap="round"/>
-                    <line x1="300" y1="300" x2="380" y2="300" stroke="#f4f6f6" stroke-width="8" stroke-linecap="round"/>
-                    <circle cx="300" cy="300" r="12" fill="#d4d7d8"/>
-                </g>
-
-                <!-- Glass highlight -->
-                <ellipse cx="290" cy="230" rx="120" ry="40" fill="url(#glass)" opacity="0.9"/>
-            </svg>
-        </div>
-
-        <div class="bubbles" id="bubbles"></div>
-        <div class="vignette"></div>
-    </div>
-    <script>
-        // Generate drifting bubbles and subtle bezel pulse
-        (function(){
-            const bubbles = document.getElementById('bubbles');
-            const watchWrap = document.getElementById('watchWrap');
-
-            function rand(min,max){return Math.random()*(max-min)+min}
-
-            // Create initial bubbles
-            for(let i=0;i<18;i++) createBubble(true);
-
-            function createBubble(initial){
-                const b = document.createElement('div');
-                b.className='bubble';
-                const size = Math.round(rand(6,48));
-                b.style.width = size+'px';
-                b.style.height = size+'px';
-                b.style.left = rand(-5,105)+'%';
-                b.style.bottom = (initial?rand(-40,60):-20)+'vh';
-                b.style.opacity = rand(0.12,0.9);
-                const duration = rand(6,18);
-                b.style.animationDuration = duration+'s';
-                b.style.animationDelay = (initial?'-'+rand(0,6)+'s':'0s');
-                b.style.transform = 'translateY(0)';
-                bubbles.appendChild(b);
-
-                // cleanup after animation
-                setTimeout(()=>{
-                    b.remove();
-                    // keep bubble field steady
-                    if(Math.random()>0.4) createBubble(false);
-                }, (duration+1)*1000);
-            }
-
-            // Periodically add bubbles
-            setInterval(()=>{ if(document.visibilityState==='visible') createBubble(false); }, 900);
-
-            // Add subtle bezel pulse using CSS animation via inline styling
-            setInterval(()=>{
-                watchWrap.style.animation = 'none';
-                void watchWrap.offsetWidth;
-                watchWrap.style.animation = '';
-            }, 8000);
-        })();
-    </script>
-            cursor: pointer;
-            border: none;
-            background-color: #0ea5e9;
-            color: rgb(255, 255, 255);
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #0284c7;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
+<img src="submariner.jpg" alt="Rolex Submariner">    <!-- LOADING SCREEN -->
+
+<div class="loader">
+
+    <div class="loader-logo">
+        SUBMARINER
+    </div>
+
+    <div class="loader-line"></div>
+
+</div>
+    <nav class="navbar">
+
+    <div class="logo">
+        SUBMARINER
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#history">History</a>
+        </li>
+
+        <li>
+            <a href="#evolution">Evolution</a>
+        </li>
+
+        <li>
+            <a href="#ocean">Ocean</a>
+        </li>
+
+        <li>
+            <a href="#watch">Watch</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+       <div class="hero-content">
+
+    <h1 class="title">
+        SUBMARINER
+    </h1>
+
+    <p class="subtitle">
+        Born beneath the waves.
+        Built for exploration.
+    </p>
+
+    <button class="hero-btn">
+        Explore The Story
+    </button>
+
+</div>
+</section>
+
+    <!-- HISTORY SECTION -->
+    <section class="history" id="history">
+
+        <div class="text">
+            <h2>1953</h2>
+
+            <p>
+                A legend was created. The Submariner became one of the most
+                iconic diving watches in history, designed for explorers
+                who pushed beyond the surface.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- EVOLUTION SECTION -->
+    <section class="evolution" id="evolution">
+
+        <h2>Through Time</h2>
+
+        <div class="timeline">
+
+            <div>
+                <h3>1953</h3>
+                <p>The beginning of underwater exploration.</p>
+            </div>
+
+            <div>
+                <h3>1960</h3>
+                <p>Engineering pushed deeper.</p>
+            </div>
+
+            <div>
+                <h3>Today</h3>
+                <p>A symbol of precision and adventure.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OCEAN SECTION -->
+   <!-- OCEAN SECTION -->
+<section class="ocean" id="ocean">
+
+    <div class="bubbles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="ocean-text">
+        <h2>Into The Deep</h2>
+
+        <p>
+            Where pressure rises and light disappears,
+            precision remains.
+        </p>
+    </div>
+
+</section>
+
+
+    <!-- DIVER SECTION -->
+   <!-- DIVER SECTION -->
+
+<section class="diver">
+
+    <div class="diver-content">
+
+        <h2>The Explorer</h2>
+
+        <p>
+            Designed for those who discover
+            what lies beneath.
+        </p>
+
+        <button>
+            Explore Depths
+        </button>
+
+    </div>
+
+
+    <div class="diver-bubbles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+</section>
+    <!-- WATCH SHOWCASE -->
+
+<section class="watch" id="watch">
+
+    <div class="watch-content">
+
+        <h2>Engineered For The Deep</h2>
+
+        <p>
+            A precision instrument created for explorers,
+            combining strength, reliability, and timeless design.
+        </p>
+
+        <div class="features">
+
+            <div>
+                <h3>300m</h3>
+                <p>Water Resistance</p>
+            </div>
+
+            <div>
+                <h3>904L</h3>
+                <p>Oystersteel</p>
+            </div>
+
+            <div>
+                <h3>60 min</h3>
+                <p>Ceramic Bezel</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+   <div class="watch-image">
+        <img src="images/submariner.jpg" alt="Rolex Submariner">
+   </div>
+
+    <div class="watch-model">
+
+        <div class="watch-face">
+
+            <span class="marker one"></span>
+            <span class="marker two"></span>
+            <span class="marker three"></span>
+            <span class="marker four"></span>
+
+            <div class="hands"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- FINAL SECTION -->
+    <section class="final">
+
+        <h2>
+            Every Second Counts
+        </h2>
+
+        <p>
+            A timeless instrument built for adventure.
+        </p>
+
+        <button>
+            Discover More
+        </button>
+
+    </section>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
